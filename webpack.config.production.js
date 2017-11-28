@@ -1,19 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
+const resolve = require('path').resolve
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './scripts/index',
+  entry: './index',
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
-  },
-  resolve: {
-    extensions: ['', '.js']
+    publicPath: '/dist/'
   },
   devtool: 'source-map',
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -23,15 +21,46 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new ExtractTextPlugin('style.css')
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
+        exclude: /node_modules/,
+        loaders: "babel-loader",
+        include: __dirname,
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader?sourceMap',
+            `sass-loader?sourceMapContents=true`,
+            'postcss-loader'
+          ]
+        })
+      },
+      {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader'
       }
+    ]
+  },
+  resolve: {
+    alias: {
+      'components': resolve(__dirname, 'src/components'),
+      'data': resolve(__dirname, 'src/data'),
+      'views': resolve(__dirname, 'src/views')
+    },
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      'src',
+      'node_modules'
     ]
   }
 };

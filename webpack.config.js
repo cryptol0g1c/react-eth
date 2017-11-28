@@ -1,32 +1,57 @@
 const webpack = require('webpack');
 const path = require('path');
+const resolve = require('path').resolve
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/dev-server',
-    './index'
-  ],
+  entry: './index',
   output: {
     path: __dirname,
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
-  resolve: {
-    extensions: ['', '.js']
-  },
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin('style.css')
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
+        exclude: /node_modules/,
+        loaders: "babel-loader",
+        include: __dirname,
+        query: {
+          presets: ['es2015', 'react', 'react-hmre']
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader?sourceMap',
+            `sass-loader?sourceMapContents=true`,
+            'postcss-loader'
+          ]
+        })
+      },
+      {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader'
       }
+    ]
+  },
+  resolve: {
+    alias: {
+      'components': resolve(__dirname, 'src/components'),
+      'data': resolve(__dirname, 'src/data'),
+      'views': resolve(__dirname, 'src/views')
+    },
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      'src',
+      'node_modules'
     ]
   }
 };

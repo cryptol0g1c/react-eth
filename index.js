@@ -1,7 +1,6 @@
-import React from 'react';
-import { render } from 'react-dom';
+require('./_index.scss');
 
-render(
-  <App />,
-  document.getElementById('root')
-);
+import React from 'react';
+import {render} from 'react-dom';
+
+render(<App />, document.getElementById('root'));

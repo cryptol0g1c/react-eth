@@ -1,14 +1,16 @@
+const webpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
-
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
+const config = require('./webpack.config.dev.js');
+const options = {
+  contentBase: './dist',
   hot: true,
-  historyApiFallback: true
-}).listen(5000, 'localhost', (err) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log('Listening at localhost:5000');
+  host: 'localhost'
+};
+
+// webpackDevServer.addDevServerEntrypoints(config, options);
+const compiler = webpack(config);
+const server = new webpackDevServer(compiler, options);
+
+server.listen(5000, 'localhost', () => {
+  console.log('dev server listening on port 5000');
 });
