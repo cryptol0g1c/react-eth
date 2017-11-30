@@ -4,22 +4,18 @@
   "description": "Generate forms with contract's ABI.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --inline --hot",
-    "build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
+    "examples": "webpack-dev-server --config examples/webpack.config.js --content-base examples",
     "lint": "eslint --cache --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty . *.js",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/afiorenza/react-eth.git"
-  },
+  "repository": "git+ssh://git@github.com/afiorenza/react-eth.git",
   "keywords": [
     "react",
     "eth",
     "solidity",
     "abi"
   ],
-  "author": "AF",
+  "author": "Agustin Fiorenza",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/afiorenza/react-eth/issues"
@@ -27,13 +23,14 @@
   "homepage": "https://github.com/afiorenza/react-eth#readme",
   "dependencies": {
     "classnames": "^2.2.5",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "formsy-react": "^1.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "react": "^15.4.1",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.4.1",
-    "react-google-maps": "^9.2.2",
     "recompose": "^0.26.0"
   },
   "devDependencies": {
@@ -45,9 +42,10 @@
     "copy-webpack-plugin": "^4.1.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.1",
+    "enzyme": "^3.2.0",
     "file-loader": "^1.1.5",
     "font-awesome": "^4.7.0",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.7",
     "sass-loader": "^6.0.6",

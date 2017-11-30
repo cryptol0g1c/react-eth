@@ -1,0 +1,7 @@
+contracts
+migrations
+.babelrc
+examples
+truffle-config.js
+truffle.js
+webpack.config.js
