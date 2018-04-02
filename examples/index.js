@@ -8,7 +8,7 @@ document.body.appendChild(rootDiv);
 
 render(
   <ReactEth
-    abi={erc20Abi}
+    abi={erc20Abi[0]}
   />, 
   rootDiv
 );

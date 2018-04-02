@@ -22,6 +22,7 @@ module.exports = {
         test: /\.jsx?$/,
         include: [
           resolve(__dirname, 'examples'),
+          resolve(__dirname, 'src')
         ],
         options: {
           cacheDirectory: true,
