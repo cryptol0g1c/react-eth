@@ -11,6 +11,8 @@ export default class ABIForm extends Component {
   }
 
   render () {
+    console.log(this.props)
 
+    return null
   }
 }
