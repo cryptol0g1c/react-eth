@@ -1,30 +1,27 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-jsonschema-form';
+import {getSchema, validateSchema} from './utils';
 
 export default class ABIForm extends Component {
   constructor (props) {
     super(props);
   }
 
-  getSchema(abi) {
-    return {
-      title: abi.name,
-      type: 'object',
-      required: (abi.inputs || []).map(({name}) => name),
-      properties: {
-        spender: {type: "string", title: "Sepnder", default: ""},
-        value: {type: "number", title: "Value", default: 0}
-      }
-    };
+  static propTypes = { // eslint-disable-line
+    abi: PropTypes.object,
+    className: PropTypes.string
   }
 
   render () {
-    let {abi} = this.props;
+    let {abi, className} = this.props;
 
     return (
       <Form
-        schema={this.getSchema(abi)}
+        className={className}
+        showErrorList={false}
+        schema={getSchema(abi)}
+        validate={(formData, errors) => validateSchema(formData, errors, abi)}
       />
     );
   }

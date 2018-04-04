@@ -1,10 +1,14 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const resolve = require('path').resolve;
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './examples/index.js',
+  entry: [
+    './examples/index.js' //,
+    // './examples/index.css'
+  ],
   output: {
     path: __dirname,
     filename: 'bundle.js'
@@ -12,8 +16,10 @@ module.exports = {
   devtool: 'inline-source-map',
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
-      title: 'react-eth'
+      title: 'react-eth',
+      template: './examples/index.html'
     })
   ],
   module: {
@@ -34,6 +40,14 @@ module.exports = {
         },
         loader: 'babel-loader'
       },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader?sourceMap'
+          ]
+        })
+      }
     ]
   },
   resolve: {

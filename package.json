@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "examples": "webpack-dev-server --config ./webpack.config.js",
-    "lint": "eslint --cache --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty . *.js",
-    "test": "jest"
+    "lint": "eslint --config ./.eslintrc.json './src/*.js'",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": "git+ssh://git@github.com/afiorenza/react-eth.git",
   "keywords": [
@@ -24,23 +25,29 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "enzyme-adapter-react-16": "^1.1.0",
+    "ethereumjs-util": "^5.1.5",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-bootstrap": "^0.31.3",
+    "react-dom": "^15.4.2",
     "react-jsonschema-form": "^1.0.2",
     "recompose": "^0.26.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.1.10",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.5",
+    "css-loader": "^0.28.11",
     "enzyme": "^3.2.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.1.0",
     "jest": "^21.2.1",
     "webpack": "^3.7.1",

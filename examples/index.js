@@ -1,14 +1,22 @@
+require('./_index.css');
+
 import React from 'react';
 import {render} from 'react-dom';
 import erc20Abi from './erc20abi';
-import ReactEth from '../src';
+import ABIForm from '../src';
 
 const rootDiv = document.createElement('div');
 document.body.appendChild(rootDiv);
 
 render(
-  <ReactEth
-    abi={erc20Abi[0]}
-  />, 
+  <div>
+    {
+      erc20Abi.map((abi, index) => <ABIForm {...{
+        abi,
+        className: 'react-eth-example',
+        key: index
+      }} />)
+    }
+  </div>,
   rootDiv
 );
