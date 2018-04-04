@@ -13,6 +13,7 @@ let logEvent = (abi, event, formData) =>
 
 render(
   <div>
+    <h1>react-eth</h1>
     {
       erc20Abi.map((abi, index) => <ReactEth {...{
         abi,
