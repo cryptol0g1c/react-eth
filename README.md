@@ -3,6 +3,9 @@
 
 The goal of this repository is to help developers to easily instantiate react forms to contracts ABI.
 
+## Live demo
+https://afiorenza.github.io/react-eth/
+
 ## Examples
 To run examples:
 * Clone this repo
