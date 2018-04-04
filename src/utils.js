@@ -1,9 +1,7 @@
 import {
   capitalize,
   isEqual,
-  isNaN,
-  map,
-  toNumber
+  map
 } from 'lodash';
 import {isValidAddress} from 'ethereumjs-util';
 

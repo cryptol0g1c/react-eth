@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-jsonschema-form';
-import {getSchema, validateSchema} from './utils';
-import {noop} from 'lodash';
+import {
+  getSchema,
+  validateSchema
+} from './utils';
+import {
+  isEmpty,
+  noop
+} from 'lodash';
 
 export default class ABIForm extends Component {
   constructor (props) {
@@ -11,10 +17,15 @@ export default class ABIForm extends Component {
 
   static propTypes = { // eslint-disable-line
     abi: PropTypes.object,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func
   }
 
   static defaultProps = {
+    abi: {
+      inputs: []
+    },
     onChange: noop,
     onSubmit: noop
   }
@@ -23,14 +34,18 @@ export default class ABIForm extends Component {
     let {abi, className, onChange, onSubmit} = this.props;
 
     return (
-      <Form
-        className={className}
-        showErrorList={false}
-        schema={getSchema(abi)}
-        validate={(formData, errors) => validateSchema(formData, errors, abi)}
-        onChange={onChange}
-        onSubmit={onSubmit}
-      />
+      <div className={className}>
+        {
+          !isEmpty(abi.inputs) &&
+            <Form
+              showErrorList={false}
+              schema={getSchema(abi)}
+              validate={(formData, errors) => validateSchema(formData, errors, abi)}
+              onChange={onChange}
+              onSubmit={onSubmit}
+            />
+        }
+      </div>
     );
   }
 }
