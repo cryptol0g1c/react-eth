@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-jsonschema-form';
 import {getSchema, validateSchema} from './utils';
+import {noop} from 'lodash';
 
 export default class ABIForm extends Component {
   constructor (props) {
@@ -13,8 +14,13 @@ export default class ABIForm extends Component {
     className: PropTypes.string
   }
 
+  static defaultProps = {
+    onChange: noop,
+    onSubmit: noop
+  }
+
   render () {
-    let {abi, className} = this.props;
+    let {abi, className, onChange, onSubmit} = this.props;
 
     return (
       <Form
@@ -22,6 +28,8 @@ export default class ABIForm extends Component {
         showErrorList={false}
         schema={getSchema(abi)}
         validate={(formData, errors) => validateSchema(formData, errors, abi)}
+        onChange={onChange}
+        onSubmit={onSubmit}
       />
     );
   }

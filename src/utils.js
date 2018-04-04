@@ -1,4 +1,10 @@
-import {capitalize, isEqual, map} from 'lodash';
+import {
+  capitalize,
+  isEqual,
+  isNaN,
+  map,
+  toNumber
+} from 'lodash';
 import {isValidAddress} from 'ethereumjs-util';
 
 const ADDRESS = 'address';
@@ -58,8 +64,14 @@ export let validateSchema = (formData, errors, abi) => {
     
     if (isEqual(type, ADDRESS)) {
       isValidAddress(value) ? null : errors[key].addError(`${key} not match address format`);
-    } else if (isUint(type) && value < ZERO) {
-      errors[key].addError(`${key} must be grater than zero`);
+    }
+    
+    if (isUint(type)) {
+      if (isNaN(toNumber(value))) {
+        errors[key].addError(`${key} must be a number`);
+      } else if (value < ZERO) {
+        errors[key].addError(`${key} must be grater than zero`);
+      }
     }
   });
   
