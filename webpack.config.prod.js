@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: './'
   },
   devtool: 'inline-source-map',
   plugins: [
