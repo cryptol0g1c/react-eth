@@ -13,21 +13,18 @@ const NUMBER = 'number';
 const OBJECT = 'object';
 const STRING = 'string';
 
-const INT_REGEX = /^int*/g;
-const UINT_REGEX = /uint*/g;
-
 const ZERO = 0;
 
-export let isInt = type => INT_REGEX.exec(type);
+export let isInt = type => (/^int\d{0,3}$/g).test(type);
 
-export let isUint = type => UINT_REGEX.exec(type);
+export let isUint = type => (/^uint\d{0,3}$/g).test(type);
 
 export let toRegularCase = camelCasedString => camelCasedString.replace(/([A-Z])/g, ' $1');
 
 export let getType = type => {
-  if (ADDRESS) {
+  if (isEqual(ADDRESS, type)) {
     return STRING;
-  } else if (BOOLEAN) {
+  } else if (isEqual(BOOLEAN, type)) {
     return BOOLEAN;
   } else if (isInt(type) || isUint(type)) {
     return NUMBER;
@@ -67,10 +64,8 @@ export let validateSchema = (formData, errors, abi) => {
     }
     
     if (isUint(type)) {
-      if (isNaN(toNumber(value))) {
-        errors[key].addError(`${key} must be a number`);
-      } else if (value < ZERO) {
-        errors[key].addError(`${key} must be grater than zero`);
+      if (value < ZERO) {
+        errors[key].addError(`${key} should be grater than zero`);
       }
     }
   });
