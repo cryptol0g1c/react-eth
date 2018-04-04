@@ -6,8 +6,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './examples/index.js' //,
-    // './examples/index.css'
+    './examples/index.js'
   ],
   output: {
     path: __dirname,

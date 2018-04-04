@@ -1,7 +1,4 @@
-contracts
-migrations
 .babelrc
+.eslintrc.json
 examples
-truffle-config.js
-truffle.js
 webpack.config.js
