@@ -4,7 +4,7 @@
   "description": "Generate forms with contract's ABI.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf docs/ && cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
+    "build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
     "examples": "webpack-dev-server --config ./webpack.config.dev.js",
     "lint": "eslint --config ./.eslintrc.json './src/*.js'",
     "test": "jest --config jest.config.json",
