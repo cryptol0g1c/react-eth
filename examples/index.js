@@ -1,0 +1,28 @@
+require('./_index.css');
+
+import React from 'react';
+import {render} from 'react-dom';
+import erc20Abi from './erc20abi';
+import ReactEth from '../src';
+
+const rootDiv = document.createElement('div');
+document.body.appendChild(rootDiv);
+
+let logEvent = (abi, event, formData) =>
+  console.log(`Form ${abi.name}. Change ${event}. Form data: ${JSON.stringify(formData)}`)
+
+render(
+  <div>
+    <h1>react-eth</h1>
+    {
+      erc20Abi.map((abi, index) => <ReactEth {...{
+        abi,
+        className: 'react-eth-example',
+        key: index,
+        onChange: ({formData}) => logEvent(abi, 'change', formData),
+        onSubmit: ({formData}) => logEvent(abi, 'submit', formData)
+      }} />)
+    }
+  </div>,
+  rootDiv
+);
