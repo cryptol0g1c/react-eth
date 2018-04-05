@@ -9,9 +9,8 @@ module.exports = {
     './examples/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'docs'),
-    filename: 'bundle.js',
-    publicPath: '/react-eth/'
+    path: path.join(__dirname),
+    filename: 'bundle.js'
   },
   devtool: 'inline-source-map',
   plugins: [
