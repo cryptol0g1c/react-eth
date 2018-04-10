@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/afiorenza/react-eth/issues"
   },
-  "homepage": "https://github.com/afiorenza/react-eth",
   "dependencies": {
     "classnames": "^2.2.5",
     "ethereumjs-util": "^5.1.5",
