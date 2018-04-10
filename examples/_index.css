@@ -1,3 +1,15 @@
+.body {
+  padding: 2rem;
+}
+
+.header {
+  padding-left: 20rem;
+}
+
 .react-eth-example {
-  padding: 30px;
+  padding-right: 2rem;
+}
+
+.example-row {
+  margin-bottom: 1rem;
 }
