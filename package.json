@@ -50,6 +50,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.1.0",
     "jest": "^21.2.1",
+    "react-json-view": "^1.16.1",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.1"
   }
