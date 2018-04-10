@@ -1,6 +1,6 @@
 {
   "name": "react-eth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate forms with contract's ABI.",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/afiorenza/react-eth/issues"
   },
-  "homepage": "https://afiorenza.github.io/react-eth/",
+  "homepage": "https://github.com/afiorenza/react-eth/blob/master/README.md",
   "dependencies": {
     "classnames": "^2.2.5",
     "ethereumjs-util": "^5.1.5",
