@@ -16,6 +16,7 @@ let logEvent = (abi, event, formData) =>
 render(
   <div className="body">
     <h1 className="header">react-eth</h1>
+    <span>(with Bootstrap styling)</span>
     <div className="container">
       {erc20Abi.map((abi, index) =>
         <div className="row example-row" key={`example-${index}`}>

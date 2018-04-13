@@ -3,7 +3,9 @@
 }
 
 .header {
+  display: inline;
   padding-left: 20rem;
+  padding-right: 1rem;
 }
 
 .react-eth-example {

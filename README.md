@@ -4,10 +4,12 @@
 ## Build status
 [![Build Status](https://travis-ci.org/afiorenza/react-eth.svg?branch=master)](https://travis-ci.org/afiorenza/react-eth)
 
-The goal of this repository is to help developers to easily instantiate react forms to contracts ABI.
+The goal of this package is to help developers to easily create react forms from smart-contracts ABI.
 
 ## Live demo
 https://afiorenza.github.io/react-eth/
+
+The live demo uses [Bootstrap](https://getbootstrap.com/). But feel free to give your own styling.
 
 ## Usage
 ```
@@ -41,13 +43,12 @@ const abi = {
 ```
 
 ## Props
-* abi: json. This prop is the interface for abi json.
+* abi: json.
 * className: string.
 * onChange: function.
 * onSubmit: function.
 
 ## Examples
-To run examples:
 * Clone this repo
 * Run `npm install`
 * Run `npm run examples`
