@@ -13,7 +13,7 @@
   "repository": "git+ssh://git@github.com/afiorenza/react-eth.git",
   "keywords": [
     "react",
-    "eth",
+    "ethereum",
     "solidity",
     "abi"
   ],

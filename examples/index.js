@@ -1,43 +1,22 @@
 require('./_index.css');
 
 import React from 'react';
-import ReactJson from 'react-json-view';
 import {render} from 'react-dom';
-import erc20Abi from './erc20abi';
-import ReactEth from '../src';
-import {isEmpty} from 'lodash';
+import ExampleGrid from './components/'
+import arraysAbi from './abis/arrays';
+import erc20Abi from './abis/erc20';
 
 const rootDiv = document.createElement('div');
 document.body.appendChild(rootDiv);
 
-let logEvent = (abi, event, formData) =>
-  console.log(`Form ${abi.name}. Change ${event}. Form data: ${JSON.stringify(formData)}`)
-
 render(
   <div className="body">
-    <h1 className="header">react-eth</h1>
-    <span>(with Bootstrap styling)</span>
     <div className="container">
-      {erc20Abi.map((abi, index) =>
-        <div className="row example-row" key={`example-${index}`}>
-          <div className="col">
-            <ReactEth {...{
-              abi,
-              className: 'react-eth-example',
-              onChange: ({formData}) => logEvent(abi, 'change', formData),
-              onSubmit: ({formData}) => logEvent(abi, 'submit', formData)
-            }} />
-          </div>
-          <div className="col">
-            {
-              !isEmpty(abi.inputs) && <ReactJson enableClipboard={false} src={abi} theme="monokai" style={{
-                maxHeight: '30rem',
-                overflowY: 'auto'          
-              }} />
-            }
-          </div>
-        </div>
-      )}
+      <h1>ERC20</h1>
+      <ExampleGrid abi={erc20Abi} />
+      <br />
+      <h1>With arrays</h1>
+      <ExampleGrid abi={arraysAbi} />
     </div>
   </div>,
   rootDiv

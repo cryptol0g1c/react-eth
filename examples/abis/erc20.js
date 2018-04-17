@@ -172,4 +172,4 @@ export default [
 		"name": "Transfer",
 		"type": "event"
 	}
-]
+];
