@@ -1,11 +1,44 @@
 import {
+  findType,
   getSchema,
   getType,
   isInt,
-  isUint
+  isUint,
+  validateValue
 } from '../utils';
 
 describe('utils', () => {
+  describe('findType', () => {
+    it('should return type', () => {
+      expect(findType({
+        inputs: [{
+          name: 'from',
+          type: 'address'
+        }, {
+          name: 'to',
+          type: 'address'
+        }, {
+          name: 'value',
+          type: 'uint'
+        }]
+      }, 'from')).toEqual('address');
+    });
+    
+    it('should return type without []', () => {
+      expect(findType({
+        inputs: [{
+          name: 'from',
+          type: 'address[]'
+        }, {
+          name: 'to',
+          type: 'address[]'
+        }, {
+          name: 'value',
+          type: 'uint[]'
+        }]
+      }, 'from')).toEqual('address');
+    });
+  });
 
   describe('getSchema', () => {
 
@@ -68,6 +101,7 @@ describe('utils', () => {
       expect(isInt('int')).toBe(true);
       expect(isInt('int8')).toBe(true);
       expect(isInt('int256')).toBe(true);
+      expect(isInt('int256[]')).toBe(true);
     });
 
     it('should return false for non int variations', () => {
@@ -83,6 +117,7 @@ describe('utils', () => {
       expect(isUint('uint')).toBe(true);
       expect(isUint('uint8')).toBe(true);
       expect(isUint('uint256')).toBe(true);
+      expect(isUint('uint256[]')).toBe(true);
     });
 
     it('should return false for non uint variations', () => {
