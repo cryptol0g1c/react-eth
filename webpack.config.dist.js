@@ -10,7 +10,8 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    libraryTarget: 'commonjs2'
   },
   devtool: 'inline-source-map',
   plugins: [
@@ -50,5 +51,8 @@ module.exports = {
       'src',
       'node_modules'
     ]
+  },
+  externals: {
+    'react': 'commonjs react'
   }
 };
