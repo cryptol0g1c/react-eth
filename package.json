@@ -2,8 +2,9 @@
   "name": "react-eth",
   "version": "0.1.9",
   "description": "Generate forms with contract's ABI.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "dist": "rm -rf ./dist && cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.dist.js",
     "build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
     "examples": "webpack-dev-server --config ./webpack.config.dev.js",
     "lint": "eslint --config ./.eslintrc.json './src/*.js'",
