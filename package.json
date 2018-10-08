@@ -1,6 +1,6 @@
 {
   "name": "react-eth",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Generate forms with contract's ABI.",
   "main": "dist/index.js",
   "scripts": {
