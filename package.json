@@ -2,7 +2,7 @@
   "name": "react-eth",
   "version": "0.1.8",
   "description": "Generate forms with contract's ABI.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
     "examples": "webpack-dev-server --config ./webpack.config.dev.js",
@@ -10,7 +10,7 @@
     "test": "jest --config jest.config.json",
     "test:watch": "npm test -- --watch"
   },
-  "repository": "git+ssh://git@github.com/afiorenza/react-eth.git",
+  "repository": "git+ssh://git@github.com:cryptol0g1c/react-eth.git",
   "keywords": [
     "react",
     "ethereum",
@@ -20,7 +20,7 @@
   "author": "Agustin Fiorenza",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/afiorenza/react-eth/issues"
+    "url": "https://github.com/cryptol0g1c/react-eth/issues"
   },
   "dependencies": {
     "classnames": "^2.2.5",

@@ -1,4 +1,6 @@
 .babelrc
 .eslintrc.json
 examples
-webpack.config.js
+webpack.config.dev.js
+webpack.config.prod.js
+setupTests.js
