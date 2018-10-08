@@ -2,12 +2,12 @@
 # Important: This package is currently on development
 
 ## Build status
-[![Build Status](https://travis-ci.org/afiorenza/react-eth.svg?branch=master)](https://travis-ci.org/afiorenza/react-eth)
+[![Build Status](https://travis-ci.org/cryptol0g1c/react-eth.svg?branch=master)](https://travis-ci.org/afiorenza/react-eth)
 
 The goal of this package is to help developers to easily create react forms from smart-contracts ABI.
 
 ## Live demo
-https://afiorenza.github.io/react-eth/
+https://cryptol0g1c.github.io/react-eth/
 
 The live demo uses [Bootstrap](https://getbootstrap.com/). But feel free to give your own styling.
 
