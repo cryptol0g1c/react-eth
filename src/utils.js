@@ -86,7 +86,7 @@ export let getSchema = abi => ({
   properties: getProperties(abi)
 });
 
-export let findType = (abi, key) => get(abi.inputs || [].find(({name}) => isEqual(name, key)), 'type', '').replace('[]', '');
+export let findType = (abi, key) => get((abi.inputs || []).find(({name}) => isEqual(name, key)), 'type', '').replace('[]', '');
 
 export let validateValue = (value, key, errors, type) => {
   if (isEqual(type, ADDRESS)) {
