@@ -64,13 +64,13 @@ export let getItems = type => {
 
 export let getProperties = abi => {
   let properties = {};
-    
-  (abi.inputs).map(({name , type}) => {
+
+  (abi.inputs || []).map(({name , type}) => {
     properties[name] = {
       title: capitalize(name),
       type: getType(type)
     };
-    
+
     if (isArrayType(type)) {
       properties[name].items = getItems(type);
     }
@@ -82,17 +82,17 @@ export let getProperties = abi => {
 export let getSchema = abi => ({
   title: abi.name,
   type: OBJECT,
-  required: (abi.inputs).map(({name}) => name),
+  required: (abi.inputs || []).map(({name}) => name),
   properties: getProperties(abi)
 });
 
-export let findType = (abi, key) => get(abi.inputs.find(({name}) => isEqual(name, key)), 'type', '').replace('[]', '');
+export let findType = (abi, key) => get(abi.inputs || [].find(({name}) => isEqual(name, key)), 'type', '').replace('[]', '');
 
 export let validateValue = (value, key, errors, type) => {
   if (isEqual(type, ADDRESS)) {
     isValidAddress(value) ? null : errors[key].addError(`${key} not match address format`);
   }
-  
+
   if (isUint(type)) {
     if (value < ZERO) {
       errors[key].addError(`${key} should be grater than zero`);
@@ -100,14 +100,14 @@ export let validateValue = (value, key, errors, type) => {
   }
 };
 
-export let validateSchema = (formData, errors, abi) => {  
+export let validateSchema = (formData, errors, abi) => {
   map(formData, (value, key) => {
     let type = findType(abi, key);
 
     isArray(value)
-      ? value.map(v => validateValue(v, key, errors, type)) 
+      ? value.map(v => validateValue(v, key, errors, type))
       : validateValue(value, key, errors, type);
   });
-  
+
   return errors;
 };
