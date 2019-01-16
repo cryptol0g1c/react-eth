@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-jsonschema-form';
 import {
@@ -6,12 +6,12 @@ import {
   validateSchema
 } from './utils';
 import {
-  isEmpty,
+  isEqual,
   noop
 } from 'lodash';
 
 export default class ABIForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
@@ -30,20 +30,20 @@ export default class ABIForm extends Component {
     onSubmit: noop
   }
 
-  render () {
-    let {abi, className, onChange, onSubmit} = this.props;
+  render() {
+    let { abi, className, onChange, onSubmit } = this.props;
 
     return (
       <div className={className}>
         {
-          !isEmpty(abi.inputs) &&
-            <Form
-              showErrorList={false}
-              schema={getSchema(abi)}
-              validate={(formData, errors) => validateSchema(formData, errors, abi)}
-              onChange={onChange}
-              onSubmit={onSubmit}
-            />
+          isEqual(abi.type, 'function') &&
+          <Form
+            showErrorList={false}
+            schema={getSchema(abi)}
+            validate={(formData, errors) => validateSchema(formData, errors, abi)}
+            onChange={onChange}
+            onSubmit={onSubmit}
+          />
         }
       </div>
     );

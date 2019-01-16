@@ -1,6 +1,8 @@
-.babelrc
 .eslintrc.json
+.travis.yml
+.gitignore
 examples
 webpack.config.dev.js
+webpack.config.dist.js
 webpack.config.prod.js
 setupTests.js

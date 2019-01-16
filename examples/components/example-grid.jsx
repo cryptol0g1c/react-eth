@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactEth from '../../src';
-import {isEmpty} from 'lodash';
+import { isEqual } from 'lodash';
 import ReactJson from 'react-json-view';
 
 const logEvent = (abi, event, formData) =>
@@ -14,15 +14,15 @@ export let ExampleGrid = props => <div className="container">
         <ReactEth {...{
           abi,
           className: 'react-eth-example',
-          onChange: ({formData}) => logEvent(abi, 'change', formData),
-          onSubmit: ({formData}) => logEvent(abi, 'submit', formData)
+          onChange: ({ formData }) => logEvent(abi, 'change', formData),
+          onSubmit: ({ formData }) => logEvent(abi, 'submit', formData)
         }} />
       </div>
       <div className="col-sm-6">
         {
-          !isEmpty(abi.inputs) && <ReactJson enableClipboard={false} src={abi} theme="monokai" style={{
+          isEqual(abi.type, 'function') && <ReactJson enableClipboard={false} src={abi} theme="monokai" style={{
             maxHeight: '30rem',
-            overflowY: 'auto'          
+            overflowY: 'auto'
           }} />
         }
       </div>
