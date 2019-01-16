@@ -2,9 +2,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const resolve = require('path').resolve;
+const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'production',
   entry: [
     './examples/index.js'
   ],
@@ -19,17 +21,15 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
     new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
       title: 'react-eth',
       template: './examples/index.html'
     })
   ],
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  },
   module: {
     rules: [
       {

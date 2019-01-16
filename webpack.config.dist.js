@@ -1,10 +1,10 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const resolve = require('path').resolve;
+const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'production',
   entry: [
     './src/index.js'
   ],
@@ -13,19 +13,16 @@ module.exports = {
     filename: 'index.js',
     libraryTarget: 'commonjs2'
   },
-  devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
     })
   ],
+  optimization: {
+    minimizer: [new TerserPlugin()]
+  },
   module: {
     rules: [
       {
